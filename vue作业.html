@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        from .edit td {
+            text-align: left
+        }
+
+        tr .edit {
+            text-align: left
+        }
+
+        .header td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="info">
+        <table>
+            <form v-on:submit.prevent="addNewperson">
+                <tr class="edit">
+                    <td><input v-model="id" placeholder="请输入编号"></td>
+                    <td><input v-model="name" placeholder="请输入姓名"></td>
+                    <td><input v-model="age" placeholder="请输入年龄"></td>
+                    <td><input v-model="tel" placeholder="请输入电话"></td>
+                    <td><button>保存</button></td>
+                </tr>
+            </form>
+            <tr class="header">
+                <td>编号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>电话</td>
+                <td>操作</td>
+            </tr>
+
+            <tr v-for='person in persons' :key='person.account'>
+                <td>{{person.account}}</td>
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>{{person.tel}}</td>
+                <td> <a href="">修改 </a><a href=""> 删除</a></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#info',  // 表示，当前我们 new 的这个 Vue 实例，要控制页面上的哪个区域
+            // 这里的 data 就是 MVVM中的 M，专门用来保存每个页面的数据的
+            data: {
+                // data 属性中，存放的是 el 中要用到的数据
+                persons: [
+                    {
+                        account: '9527',// 通过 Vue 提供的指令，很方便的就能把数据渲染到页面上，程序员不再手动操作DOM元素
+                        name: 'luery',
+                        age: '36',
+                        tel: '795436884664'
+                    },
+                    {
+                        account: '9529',
+                        name: 'sherry',
+                        age: '16',
+                        tel: '956367884664'
+                    },
+                    {
+                        account: '2334',
+                        name: 'diomen',
+                        age: '26',
+                        tel: '966637884664'
+                    },
+
+                ],
+                nextTodoId: 4
+            }
+            //methods: {
+            // addNewperson: function () {
+            //this.persons.push({
+            //      account: this.nextTodoId++,
+            //       name: this.id,
+            //       age: this.age,
+            //        tel: this.tel
+            //      })
+            //      this.newTodoText = ''
+            //   }
+            // }
+        })
+
+
+    </script>
+</body>
+
+</html>

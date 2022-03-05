@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab栏切换</title>
+    <style>
+        .tab li {
+            margin-top: -1px;
+            position: relative;
+            padding: 10 px 25 px;
+            font-size: 14px;
+            display: inline;
+
+        }
+
+        .tab li:hover {
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: #e4393c;
+            color: #fff;
+            cursor: default;
+        }
+
+        .tab_cont div {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价(200+)</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_cont">
+            <div class="item" style='display:block;'>
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装内容
+            </div>
+            <div class="item">
+                售后保障内容
+            </div>
+            <div class="item">
+                商品评价(200+)内容
+            </div>
+            <div class="item">
+                手机社区内容
+            </div>
+        </div>
+    </div>
+    <script>
+        var tab_list = document.querySelector('.tab_list')
+        var lists = tab_list.querySelectorAll("li")
+        for (var i = 0; i < lists.length; i++) {
+            //(下面这一句是为了2中的操作)先给每个li模块一个索引属性 
+            lists[i].setAttribute('index', i);
+
+            lists[i].onclick = function () {
+                //所有的操作都在这个onclick事件中完成, 因为都和它是绑定的
+                //1.把当前的颜色选为红色,别的为白色
+                //把别的变为白色 
+                for (var i = 0; i < lists.length; i++) {
+                    lists[i].className = '';
+                }
+                //把当前的颜色选为红色
+                this.className = 'current';
+
+                //2.继续在这个循环里面让名称和内容一一对应
+
+                //然后取内容元素  
+                var items = document.querySelector('.tab_cont').querySelectorAll('.item')
+                //把其余的隐藏,对应的元素显示
+                var index = this.getAttribute('index');
+                //console.log(index)
+                for (var i = 0; i < items.length; i++) {
+                    //所有元素先的隐藏
+                    items[i].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

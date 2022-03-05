@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+
+        .jd {
+            position: absolute;
+            top: 0px;
+        }
+
+        .con {
+            display: none;
+            position: absolute;
+            top: -50px;
+            width: 171px;
+            border: 1px solid black;
+            box-shadow: 0 2px 4px black;
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+        }
+
+        .con::before {
+            content: '';
+            width: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid rgb(82, 77, 77);
+            border-style: solid dashed dashed;
+            border-color: rgb(216, 223, 223) transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+
+    </div>
+    <script>
+        //模拟京东搜索框,即按s键定位到搜索框输入内容
+        //思路:检测用户是否输入了s ,如果输入了,就把光标定位到搜索框里面
+        //使用键盘事件 keycode() 判断s的按下 
+        // 使用focus()方法获得焦点 
+        var inp = document.querySelector('input')
+        document.addEventListener('keyup', function (e) {
+            console.log(e.keyCode)
+            if (e.keyCode === 83) {
+                inp.focus();
+            }
+        })
+
+        //京东快递单号查询,在输入框的上面显示输入大号字体
+        //输入内容时,上面的大号字体盒子con 同步显示输入的内容
+        //如果快递单号为空,则隐藏大号字体盒子con
+        // 注意: keydown和keypress在文本框中的特点:这两个事件触发的时候,文字还未进入文本框
+        //所以这里用 keyup最合适 
+        var con = document.querySelector('.con')
+        var input_jd = document.querySelector('.jd')
+        input_jd.addEventListener('keyup', function () {
+            if (this.value == '') {
+                con.style.display = 'none'
+            } else
+                con.style.display = 'block'
+            con.innerHTML = this.value;
+        })
+        //当输入文本框失去焦点时, 上面的大号字体盒子隐藏,反之出现
+        input_jd.addEventListener('blur', function () {
+            con.style.display = 'none';
+        })
+        input_jd.addEventListener('focus', function () {
+            if (this.value !== '') {
+                con.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

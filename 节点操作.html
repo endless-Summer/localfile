@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            width: 267px;
+            height: 102px;
+            resize: none;
+            border: 1px solid;
+
+        }
+
+        ul li {
+            width: 267px;
+            background-color: pink;
+            border: 1px solid rgb(104, 10, 10);
+
+            position: relative;
+            padding: 10px 5px;
+        }
+
+        ul li a {
+            position: absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <ul>
+        <li> 66</li>
+    </ul> -->
+
+    <!-- 创建一个简单的留言板功能  点击发布就能出现新的留言 -->
+    <textarea></textarea>
+    <button> 发布</button>
+    <ul class="cont">
+    </ul>
+
+
+    <script>
+        //1.创建一个元素节点 document.createElement 
+        var li = document.createElement('li')
+        //2 添加节点 node.apendchild(child)   node父级  child 子级   
+        //  这个方法是在某节点后面添加元素  
+        var ul = document.querySelector('ul')
+        //  ul.appendChild(li);
+        // 3 添加节点  node.insertBefore(child,指定元素) 
+        var lli = document.createElement('li')
+        //ul.insertBefore(lli, ul.children[0])
+        //总结 我们想在页面中添加一个新的元素: 1  创建元素 2 添加元素
+
+
+        //创建一个简单的留言板功能  点击发布就能出现新的留言 
+        var text = document.querySelector('textarea');
+        var cont = document.querySelector('.cont');
+        var lis = cont.children;
+        var btn = document.querySelector('button');
+        btn.onclick = function () {
+            var disc = document.createElement('li')
+            disc.innerHTML = text.value + '<a href="javascript:(0)">删除</a>';
+            cont.insertBefore(disc, cont.children[0]);
+            var a = document.querySelectorAll('a')
+            for (var i = 0; i < a.length; i++) {
+                a[i].onclick = function () {
+                    cont.removeChild(this.parentNode);
+                    //移除cont这个元素它的子元素 (this.parentNode就是a[i]这个元素的父节点--li)
+                }
+            }
+            text.value = '';  //发布后清空留言板
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            padding-left: 20px;
+        }
+
+        .wrong {
+            color: red;
+        }
+
+        .right {
+            color: aquamarine;
+        }
+
+        .hidd {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id='obody'>
+    <div>
+        <input class="inp" value="请输入用户名">
+        <p class="message">请输入6-16位字符</p>
+    </div>
+    <div class="hid"> 我是广告 </div>
+    <button class='control'>x</button>
+    <p> wb </p>
+    <button class='light'>开关灯</button>
+    <script>
+        var inp = document.querySelector('.inp');
+        var message = document.querySelector('.message');
+        var hid = document.querySelector('.hid');
+        var btn = document.querySelector('.control');
+        var p = document.getElementsByTagName('p');
+        var light = document.querySelector('.light');
+        var obody = document.getElementById('obody')
+        var flag = 0;
+        light.onclick = function () {
+            if (flag == 0) {
+                obody.style.backgroundColor = 'black';
+                flag = 1;
+            } else {
+                obody.style.backgroundColor = 'white';
+                flag = 0;
+            }
+        }
+        p.onfocus = function () {
+
+        }
+        btn.onclick = function () {
+            hid.className = 'hidd';
+        }
+        inp.onfocus = function () {
+            inp.value = '';
+        }
+        inp.onblur = function () {
+            inp.value = '请输入用户名';
+            inp.style.type = 'password';
+
+            if (this.value.length < 6 || this.value.length > 16) {
+                message.className = 'message wrong';
+                message.innerHTML = '您输入的位数不对,需要6-16位字符串'
+            } else {
+                message.className = 'message right';
+                message.innerHTML = '您输入的正确';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

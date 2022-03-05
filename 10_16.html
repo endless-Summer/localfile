@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <input type="text" value="请输入内容">
+
+</body>
+<script>
+    // 文本框 密码框等的值都是通过value来改变的 
+    var btn = document.querySelector('button')
+    var input = document.querySelector('input')
+    btn.onclick = function () {
+        input.value = '我被点了';
+        this.disabled = true; //点击之后button禁用  disabled这个属性来实现
+        //this 指向的是事件函数的调用者 
+    }
+</script>
+
+</html>

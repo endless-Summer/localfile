@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script>
+		// 字符串中某个字符出现的位置和次数. 
+		// var str='dalkfjdksacoiafng78887'; 
+		// var index=str.indexOf('7');
+		// // console.log(index);
+		// var num=0;
+		// for (num=0;index!==-1;num++){
+		// 	console.log(index);
+		// 	index=str.indexOf('7',index+1);
+		// }
+		// console.log('7出现的次数是'+num);
+		//数组中元素出现的位置和次数; 
+		// var arr=['7','7','88','9','8','7','43','5','4','88','88','77',34,'88',88];
+		// var index=arr.indexOf('88');
+		// // console.log(index);
+		// var num=0;
+		// while(index!==-1){
+		// 	console.log(index);
+		// 	num++;
+		// 	index=arr.indexOf('88',index+1);
+		// }
+		// console.log('88的个数是'+num);
+
+		//根据位置返回字符串              ***********重点**************
+		//1.chartAt(index); 根据位置返回字符 
+		//  var str='I do not like you, but myself';
+		//  // console.log(str.charAt(3));
+		//  // //遍历整个字符串;
+		//  //  for (var i=0 ;i<str.length;i++){
+		// 	//   console.log(str.charAt(i));
+		//  //  }
+		//  //2.str[index]  与chartAt(index)方法的作用相同,不过是H5新增的写法; str是某个字符串的名称
+		//  var index=str[3]
+		//   console.log(index);
+		//  var str1='abcdefghigklmnopqrstuvwxyz';
+		//  var index1=str1[1];
+		//  console.log(index1);
+		// //3.charCodeAt(index())  返回指定位置处字符的ASCII码 ;  
+		// console.log(str1.charCodeAt(0));   //a对应的就是97; 
+
+
+		//统计出现次数最多的字符.
+		//基础逻辑 
+		// var  b={
+		//   age: 11
+		// }
+		// if (b['age']){  
+		// 	console.log('exist');   // 判断b这个对象中的age属性是否存在, 0  false undefined 为假
+		// } else {
+		// 	console.log('not');   //当这个属性不存在,或它的值为 0  false undefined显示not;
+		// } 
+		// //具体代码
+		// var str='flsjdalkfkfifjwiouasf';
+		// var o ={} ; 
+		// for (var i=0;i<str.length;i++){
+		// 	var chars=str.charAt(i);  // chars是字符串的每一个字符
+		// 	if (o[chars]){
+		// 		 o[chars]++;
+		// 	}else  {
+		// 		o[chars]=1;
+		// 	}
+		// }
+		// console.log(o); 
+		// //遍历对象的属性和属性值:
+		//  var max=0;
+		//  var ch='';
+		//  for (var k in o) {   //遍历对象属性
+		// 	 // k 得到的是属性名;
+		// 	 //o[k]得到的是属性值;
+		// 	 if (o[k]>max){  
+		// 		 max=o[k];
+		// 		 ch=k;
+		// 	 }
+		//  }
+		//  console.log(max); 
+		//  console.log('最多的字符是'+ch)
+
+		//字符串拼接和截取方法:
+		//1. concat ()  连接两个或多个字符串,等效于 + 但是没+常用; 
+		// var m= 'mom';
+		// console.log(m.concat('dad')); //momdad
+		// console.log(m+'dad');         //momdad
+		// //2. substr(start,length)  从start位置开始,截取长度为length.  这个比较常用.
+		// var str='wobushinidieeeeee';
+		// console.log(str.substr(2,5));
+		// //3. 替换字符  replace('被替换的字符','替换的字符') 
+		// console.log(str.replace('e','0000'))
+		// //如果想要全部替换某一个字符,用循环
+		// while(str.indexOf('e')!==-1){
+		// 	str=str.replace('e','M')
+		// }
+		// console.log(str);
+		//4.字符串转化为数组           前面学过join()   数组转化为字符串.
+		// split('分隔符');
+		// var str1='a,b,cd,e,f'
+		// console.log(str1.split(','));
+		// var str7='a b c d';
+		// console.log(str7.split(' '));
+
+		//简单数据类型和复杂数据类型:
+		//简单类型又叫做基本数据类型或值类型,复杂类型又叫引用 类型.
+		//值类型,在存储时变量中存储的是值本身,所以叫值类型:
+		//String, number, boolean, undefined, null
+		// var str=null;
+		// console.log(typeof str);  //结果是object.    null返回的是一个空对象
+		//所以当以后要把什么添加进对象,但是 暂时还没想好加什么的时候,就可以给null值.
+		//引用类型:复杂数据类型,在存储时变量中存储的是地址(引用),因此叫引用类型.
+		//通过 new 关键字创建的对象(系统对象. 自定义对象),如object,array,date等.
+
+		//堆栈空间分配区别:
+		//1. 栈(操作系统) : 由操作系统自动分配释放内存函数的参数值,局部变量的值等,其操作方式等于
+		//数据结构中的栈,简单数据类型放在栈里面.
+		//2. 堆(操作系统): 存储复杂数据类型(对象),一般由程序员分配,若程序员不释放,由垃圾回收机制回收.
+		//复杂数据类型存放在堆里面
+		//简单数据类型:存放数据时直接 把值存放在栈中.
+		//复杂数据类型:存放数据时先在栈中存放一个16进制的地址(由系统分配),这个地址指向堆中的数据,我们访问的话也是按照这个顺序进行访问的.
+
+		//简单类型传参
+		//函数的形参也可以看做是一个变量,当我们把一个值类型(简单数据类型)变量作为参数传递给函数的形参时,其实是把变量在栈空间里的值复制了一份给形参,那么在方法内部形参做任何修改,都不会影响到外部的变量.
+		//  function fn(a){
+		// 	 a++;
+		// 	 console.log(a);
+		//  }
+		// var x=10;
+		// fn(x);           	//输出的是11; 
+		// console.log(x);		//输出的是10; 
+
+		//复杂数据类型传参:当我们把引用数据类型 变量传给形参时,其实是把变量保存在栈里面的地址复制给了形参,形参和实参其实保存的是同一个堆地址,所以操作的是同一个对象.
+		// function person(name){
+		// 	this.name=name;
+		// }
+		// function f1(x){  //x=p
+		// 	console.log(x.name); //这个输出什么? 第二个输出  李华
+		// 	x.name='张雪';
+		// 	console.log(x.name); //这个输出什么?   第三个输出   张雪 
+		// }
+		// var p= new person('李华') ;
+		// console.log(p.name);  //这个输出什么? 第一个输出  李华
+		// f1(p);    //执行了函数f1() p为实参  改变了x.name为张雪
+		// console.log(p.name); //这个输出什么?  第四个输出  张雪
+	</script>
+	<meta charset="utf-8">
+	<title>document</title>
+</head>
+
+<body>
+	<div id='time'>2120-10-8</div>
+	<script>
+		var time = document.getElementById('time');
+		console.log(time);
+		console.dir(time);
+
+
+	</script>
+</body>
+
+</html>

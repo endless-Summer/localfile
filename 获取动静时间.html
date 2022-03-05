@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id='myClock'>
+
+</div>
+<div>
+    <button onclick="stop()"> stop clock </button>
+</div>
+
+
+<body>
+    <script>
+
+        var myVar = window.setInterval('displayTmie(),1000')
+        function displayTmie() {
+            document.getElementById('myClock');
+            var date = new Date();
+            document.getElementById('myClock').innerHTML = date;
+        }
+        function stop() {
+            window.clearInterval(myVar);
+        }
+
+        var today = new Date();
+        document.write(today + '<br/>');
+        document.write(today.getFullYear() + '<br/>');
+        document.write(today.getMonth() + 1 + '<br/>');;
+        document.write(today.getDate());
+
+    </script>
+
+</body>
+
+</html>

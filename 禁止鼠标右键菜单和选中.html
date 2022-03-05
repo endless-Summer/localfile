@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>禁止复制的内容</h2>
+    <script>
+        //禁止鼠标右键菜单的出现 contextmenu事件
+        var h2 = document.querySelector('h2')
+        h2.addEventListener('contextmenu', function (e) {
+            e.preventDefault();//如果事件是可取消的，则 preventDefault() 方法会取消该事件，这意味着属于该事件的默认操作将不会发生。
+            //举例，在以下情况下有用：
+            //单击“提交”按钮，阻止其提交表单
+            //单击链接，防止链接跟随 URL
+        })
+        //禁止选中(selectstart)
+        h2.addEventListener('selectstart', function (e) {
+            e.preventDefault();//阻止默认行为
+        })
+    </script>
+</body>
+
+</html>

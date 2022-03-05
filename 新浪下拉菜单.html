@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li,
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .nav {
+            display: flex;
+
+        }
+
+        .nav li {
+            width: 40px;
+            text-align: center;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .nav>li>a:hover {
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        .nav ul {
+            display: none;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            border-left: 1px solid #FECC5B;
+            border-right: 1px solid #FECC5B;
+            position: absolute
+        }
+
+        .nav ul li {
+            border-bottom: 1px solid #FECC5B;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div> 我div
+        <li></li>
+    </div>
+    <span>我 span</span>
+    <script>
+        var nav = document.querySelector('.nav')
+        var lis = nav.children; //得到4个li;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                this.children[1].style.display = 'block';
+                //ul 是li标签中的第二个元素节点  所以用下标1
+            }
+            lis[i].onmouseout = function () {
+                this.children[1].style.display = 'none';
+            }
+        }
+
+        //兄弟节点   
+        var div = document.querySelector('div')
+        //nextSibling  下一个兄弟节点  包括文本节点和元素节点 
+        console.log(div.nextSibling);
+        console.log(div.previousSibling)
+
+        //2. nextElementSibling 和previousElementSibling  返回元素节点  无就返回null
+        console.log(div.nextElementSibling);
+        console.log(div.previousElementSibling);
+        //这个方法依旧存在兼容性问题
+        //解决办法:  自己封装一个兼容性函数 
+
+        var ul = document.querySelector('div');
+        var li = ul.children;
+        console.log(li[0]);
+    </script>
+</body>
+
+</html>

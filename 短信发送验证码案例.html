@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号码: <input type="number"> <button> 发送</button>
+    <script>
+        //发送短信验证码案例  
+        //按钮点击后,禁用它,  disable为true
+        //同时按钮的内容变化, button需要用innerHTML来修改
+        //按钮内容有秒数的变化,因此需要用定时器
+        //需要定义一个变量在定时器中,不断递减
+        //定时器要停止,并且复原按钮初始状态
+        var btn = document.querySelector('button')
+        var time = 5;
+        btn.addEventListener('click', function () {
+            btn.disabled = true;
+            var timer = setInterval(function () {
+                if (time == 0) {
+                    //清除定时器和复原按钮
+                    clearInterval(timer);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                    time = 5;//这个是计时重新开始
+                } else {
+                    btn.innerHTML = '还剩下' + time + '秒';
+                    time--;
+                }
+            }, 1000)
+        })
+
+
+        //this指向问题: 一般情况下this指向的是那个调用它的对象
+
+        //1.全局作用域或普通函数中 this指向全局对象window (定时器里面的this也指向window)
+        console.log(this)// window 
+        setInterval(function () {
+            //  console.log(this)  // window
+        }, 2000)
+        //2.方法调用中谁调用指向谁 
+        var a = {
+            sayHi: function () {
+                //  console.log(this)   // 指向的是a这个对象 
+            }
+        }
+        a.sayHi();
+        //3.构造函数中this指向构造函数的实例 
+        function fun() {
+            console.log(this)  // this指向的是fn  是fun的实例对象
+        }
+        var fn = new fun()
+
+    </script>
+</body>
+
+</html>

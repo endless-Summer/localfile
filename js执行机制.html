@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // js执行机制:
+        //  js是单线程语言,但是允许同步和异步执行
+        //同步就是一个任务完成后再下一个,异步就是可以多个任务同时进行.
+        //问题1 :   结果是 1111   333 2222
+        // console.log(1111)
+        setTimeout(function () {
+            //    console.log(22222222);
+        }, 2000);
+        //console.log(333333333)
+
+        //问题2:
+        //同步任务:  同步任务都在主线程上执行,形成一个执行栈
+        //异步任务:js的异步是通过回调函数实现的 ,一般异步任务有三种类型:
+        //1.普通事件,如click,resize等   
+        //2.资源加载, 如 load, error等 
+        //3.定时器,包括setinterval,settimeout等
+        //异步任务相关的回调函数添加到任务队列中(任务队列也叫做消息队列)
+        //  console.log(1111)
+        setTimeout(function () {
+            //     console.log(22222222);
+        }, 0);
+        //  console.log(333333333)
+        //输出结果是:  1111 333 2222;
+
+        //问题3:  事件循环 
+        console.log(1111)
+        document.onclick = function () {
+            console.log('click')
+        }
+        setTimeout(function () {
+            console.log(22222222);
+        }, 5000);
+        console.log(333333333)
+        //这个会先输出 111 3333,然后根据点击时间,
+        //  0-5s点击: 任务队列中会依次有onclick和settimeout两个任务,结果会先输出click再222;
+        //  5s以后点击:任务队列中会依次有 settimeout和onclick两个任务,结果会先输出222再click
+
+        //在这个过程中,主线程执行完,会查询任务队列,取出一个任务,推入主线程处理,
+        //然后继续重复该动作, 该过程称为事件循环
+    </script>
+</body>
+
+</html>

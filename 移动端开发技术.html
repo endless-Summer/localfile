@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html</title>
+    <style>
+        div {
+            margin: 5px 10px;
+            border: 1px solid red;
+            width: 300px;
+            height: 200px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text">
+    <input type="date" id="birthday">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <button id="btn" type="submit"> 提交</button>
+    <table>
+        <tr>
+            <td>11</td>
+            <td>22</td>
+        </tr>
+        <tr>
+            <td>33</td>
+            <td id="hid">44我本是hide</td>
+        </tr>
+    </table>
+    <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        //加载页面的时候就运行的函数
+        //方式1  注意括号 
+        //用id获取元素的话,  原生比jQuery快很多 
+        $(document).ready(function () {
+            $('#btn').click(() => {
+                let nowtime = new Date()
+                let a = $('#birthday').val();
+                let date = new Date(a);
+                let age = nowtime.getFullYear() - date.getFullYear()
+                console.log(age);
+                $('#hid').show()
+            })
+
+
+        })
+
+
+
+        //方式2
+        $(function () {
+            let tr = $('tr:first');  //检测到的第一个tr元素  
+            console.log(tr)
+            let tds = $('td:first-child')//检测到的所有的第一个子元素是td的元素
+            console.log(tds)
+
+            $('#hid').hide()
+        })
+        //创建元素  有下面两种方式  
+        document.write('1')
+        let div1 = document.createElement('div')
+        div1.innerHTML = '原生'
+        document.body.append(div1);
+        let $div = $('<div>jQuery</div>');
+        $('body').append($div)
+
+        //创建属性  
+        let inp = $("<input type='button' value='开始'>")
+
+        $div.append(inp)
+
+        //document.body.removeChild(div);
+        //jquery方法:
+        //1删除节点  节点自己调用  括号内不可以传参数
+        //$div.remove()    
+
+        //  2用父节点清空所有子节点
+        ///$div.empty()    
+
+        //3常用于节点分离  可保存删除的内容
+        let del = $div.detach()
+        $('body').append(del) //将删除的内容又加进去
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='demo' index='shuxing'>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <div>
+        <table>
+            <thead>全选<input type="checkbox" id="all_con"></thead>
+            <thead>
+            <tbody id='tb'>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                </tr>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+    <script>
+        var btn = document.getElementsByTagName('button');
+        for (i = 0; i < btn.length; i++) {
+            btn[i].onclick = function () {
+                for (i = 0; i < btn.length; i++) {
+                    btn[i].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = 'pink';
+            }
+        }
+        //排他思想:先把整体都设置为无样式,再把自己设置为想要的样式.
+
+        var all_con = document.getElementById('all_con');
+        var tb = document.getElementById('tb').getElementsByTagName('input');
+        all_con.onclick = function () {
+            //console.log(this.checked);
+            for (i = 0; i < tb.length; i++) {
+                tb[i].checked = this.checked;
+            }
+        }
+
+
+        for (i = 0; i < tb.length; i++) {
+            tb[i].onclick = function () {
+                var flag = true;
+                for (i = 0; i < tb.length; i++) {
+                    if (tb[i].checked !== true) {
+                        flag = false;
+                        break;// 只要有一个没选中,就直接退出这个循环.不需要再判断
+                    }
+                }
+                all_con.checked = flag;
+            }
+        }
+
+        //自定义属性的操作
+        //一. 获取元素的属性值
+        // 1.  element.属性   获取属性值   获取内置的属性值(元素本身自带的)
+        var butn1 = document.querySelector('#demo')
+        console.log(butn1.id); //可以获取  值 demo
+        console.log(butn1.index) //不能获取  undefined
+        // 2. element.getAtrribute('属性')   获取自定义的属性(我们自己定义的)
+        console.log(butn1.getAttribute('id')); // 可以获取  值 demo
+        console.log(butn1.getAttribute('index')); // 可以获取  值index
+        //二. 设置元素的属性值
+        //1.  element.属性='值'
+        butn1.id = 'test';
+        butn1.className = 'nva';  //这个也修改的是class属性 但是用 classname
+        //2. element.setAttribut('属性','值');主要针对自定义属性.
+        butn1.setAttribute('index', 2)
+        butn1.setAttribute('class', 3)  //这个也修改的class属性 ,但是要用class
+        //三.  移除属性 removeattribute ('属性')
+        butn1.removeAttribute('class')
+
+    </script>
+</body>
+
+</html>

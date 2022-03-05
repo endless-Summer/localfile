@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1普通函数
+        function fn() {
+            console.log(1);
+        }
+        fn();
+        //2立即执行函数: 不需要调用,自己可以立刻执行的函数 (如果有多个立即执行函数一定要有分号;)
+        //写法:  
+        // (function(){})()  或 (function(){}())
+        (function (a, b) {   //可以编辑形参  
+            console.log(a + b)
+        })(1, 2);    //可以书写实参
+
+        (function (a, b) {
+            console.log(a + b)
+        }(2, 3));
+        //3.立即执行函数的最大的作用就是 独立创建了一个作用域, 里面所有的变量都是局部变量,不会有命名冲突
+    </script>
+</body>
+
+</html>

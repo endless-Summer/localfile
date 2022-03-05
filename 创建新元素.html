@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>click</button>
+    你好啊
+    <div class="inner"></div>
+
+    <div class='create'></div>
+
+</body>
+<script>
+    //1. document.write('<div>123</div>')  
+    //这种方式的缺点是,当页面文档流加载完后,再调用这句话会导致整个页面的重绘()
+    var button = document.querySelector('button')
+    button.onclick = function () {//如果点击button按钮 那原来的整个页面(button按钮和你好啊)就都没了
+        document.write('<div>123</div>')
+    }
+    //2.innerHTML 创建元素
+    var inner = document.querySelector('.inner')
+    //   inner.innerHTML = '<a href="#">清醒一下</a>'
+    //用拼接字符串的方式  添加100个清醒一下  效率极低 大约 3000ms
+    //for (let i = 0; i <= 100; i++) {
+    //  inner.innerHTML += '<a href="#">清醒一下</a>'
+    //}
+    //用数组的方式添加     效率极高  速度很快  大约 8ms
+    var inn = [];
+    for (let i = 0; i < 100; i++) {
+        inn.push('<a href="#">清醒一下</a>');//给数组inn中添加这个元素100次
+    }
+    inner.innerHTML = inn.join(' ')//把数组转化成字符串并以空格隔开添加到inner中. 
+    //3.document.createElement() 创建元素 
+    var create = document.querySelector('.create')
+    for (let i = 0; i < 100; i++) {   //大约 20ms
+        var a = document.createElement('a');
+        create.appendChild(a);
+    }
+//总结: inner创建多个元素(不用字符串拼接而采用数组形式拼接)的话效率会比create高一点,但是结构稍微复杂
+    //      create创建多个元素结构会更清晰. 
+</script>
+
+</html>

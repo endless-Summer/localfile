@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .w {
+            width: 1100px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: aqua;
+        }
+
+        .bar {
+            height: 250px;
+            background-color: red;
+        }
+
+        .index {
+            height: 2300px;
+            background-color: rgb(19, 233, 108);
+        }
+
+        .other {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 60px;
+            height: 130px;
+            background-color: rgb(19, 231, 19);
+        }
+
+        .return {
+            display: none;
+            bottom: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="other">侧边栏
+        <span class="return ">返回顶部</span>
+    </div>
+    <div class="header w">标题</div>
+    <div class="bar w ">导航</div>
+
+    <div class="index w">主体部分</div>
+    <script>
+        var slide = document.querySelector('.other')
+        var header = document.querySelector('.header')
+        var back = document.querySelector('.return')
+        var bar = document.querySelector('.bar')
+
+        var barTop = bar.offsetTop; // 就是被卷去的头部header的数值大小  (其实是导航到顶部的距离)
+        var slideTop = slide.offsetTop - barTop;
+
+        var index = document.querySelector('.index')
+        var indexTop = index.offsetTop;//主题到顶部的距离 
+        //window.pageYOffset 是向上被卷去的距离
+        document.addEventListener('scroll', function () {
+            console.log(window.pageYOffset)
+            //当我们滚动到导航栏位置,就让侧边栏固定
+            if (window.pageYOffset > barTop) {
+                slide.style.position = 'fixed';
+                slide.style.top = slideTop + 'px'
+            } else {
+                slide.style.position = 'absolute';
+                slide.style.top = '300px'
+            }
+            //当我们滚动到index模块,就显示返回顶部
+            if (window.pageYOffset > indexTop) {
+                back.style.display = 'block';
+            } else {
+                back.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>

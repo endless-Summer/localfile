@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px
+        }
+
+        img {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <img src="image/img-16239985398504485455a28c99a8e0f61f75bba86f55a.jpg" alt="IU">
+    <script>
+        document.addEventListener('click', function (e) {
+            //1.clientX/Y鼠标在浏览器窗口可视区的XY坐标,和滚动条位置无关  
+            // 坐标系原点在左上角(0,0)
+            console.log(e.clientX);//相对于左边
+            console.log(e.clientY)//相对于上边
+            //2.pageX/Y 鼠标在整个文档页面的XY坐标
+            console.log(e.pageX)
+            console.log(e.pageY)
+            //3.screenX 相对于电脑屏幕的XY坐标
+        })
+
+
+        //案例: 让鼠标有个天使图片一直跟随
+        //鼠标移动事件: mousemove  
+        //在整个页面中,给document注册事件
+        var img = document.querySelector('img')
+        document.addEventListener('mousemove', function (e) {
+            //原理: 每次移动鼠标,都获得最新的数遍坐标,把这个x和y坐标赋值给
+            //图的top和left值 
+            //  ps:一定要给top和left值拼接px
+            var x = e.pageX;
+            var y = e.pageY;
+            img.style.top = y - 25 + 'px';
+            img.style.left = x - 35 + 'px';
+        })
+
+        //常用的键盘事件(多用的是keydown和keyup)
+        //1.keyup 按键抬起的时候触发      
+        // document.onkeyup = function () {
+        //   console.log('弹起了一个键')
+        // }
+        document.addEventListener('keyup', function () {
+            console.log('弹起了一个键')
+        })
+        //2.keydown 按下的时候触发  
+        document.addEventListener('keydown', function () {
+            console.log('按下了一个键down')
+        })
+        //3.keypress 按下的时候触发~ 但是它不识别功能键 如左右箭头 shift
+        //注意  可以识别enter!!!
+        document.addEventListener('keypress', function () {
+            console.log('我也按下了一个键press')
+        })
+        //4.三个事件的执行顺序是  down-press-up
+
+
+        //键盘事件对象
+        //键盘事件对象的keycode属性 可以返回对应的键的asxcII值
+        //01.keyup和keydown不区分大小写  a和A都是65
+        //02.keypress事件区分大小写 大写A 65 小写a 97
+        document.addEventListener('keyup', function (e) {
+            console.log('UP:' + e.keyCode)
+        })
+        document.addEventListener('keypress', function (e) {
+            console.log('press:' + e.keyCode) //97
+            if (e.keyCode === 97) {
+                alert('你按了a')
+            }
+            else {
+                alert('你没按a')
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <ol id='season'>
+        <li>春</li>
+        <li>夏</li>
+        <li>秋</li>
+        <li>冬</li>
+    </ol>
+    <script>
+        var ul = document.querySelector('ol');
+        /*console.log(ul.childNodes);
+       console.log(ul.childNodes[0].nodeType)//  返回节点类型,值为3
+       console.log(ul.childNodes[1].nodeType)//  返回节点类型,值为1
+       for (var i = 0; i < ul.childNodes.length; i++) {
+           if (ul.childNodes[i].nodeType == 1) {
+               // ul.childNodes[i]就是元素节点
+               console.log(ul.childNodes[i]); //这样获取到了所有的元素节点
+           }
+       }
+       console.log(ul.children) */
+
+        //获取第一个子节点   
+        //1 firstchild  不管是文本节点还是元素节点 
+        console.log(ul.firstChild);
+        console.log(ul.lastChild);
+
+        //2  parentNode.firstElementChild 和 lastElementChild 
+        // 但是有兼容性问题  需要IE9以上
+        // 获取第一个(最后一个)元素节点  找不到则返回null 
+        console.log(ul.firstElementChild);
+        console.log(ul.lastElementChild);
+
+        //3 实际开发中, 使用的是ul.child[]  既没有兼容问题,也返回元素节点
+        console.log(ul.children[0]); //第一个  
+        console.log(ul.children[ul.children.length - 1]) //最后一个 
+
+    </script>
+</body>
+
+</html>

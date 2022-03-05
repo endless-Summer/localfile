@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //BOM 浏览器对象模型 
+        //它提供了独立于内容而与浏览器窗口进行交互的对象,其核心对象是window
+        //BOM由一系列的对象构成,并且每个对象都有很多方法和属性
+        var num = 111;
+        console.log(num);
+        console.log(window.num);
+        function fn() {
+            console.log(22222)
+        }
+        fn();
+        window.fn();
+        console.dir(window)  // 里面有window的方法和属性  如alert()
+        window.name //特殊属性, 默认存在.
+    </script>
+</body>
+
+</html>

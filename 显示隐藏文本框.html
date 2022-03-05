@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    div {
+        height: 200px;
+        width: 200px;
+        background-color: aqua;
+
+    }
+
+    .change {
+        height: 400px;
+        width: 400px;
+        background-color: brown;
+        margin-top: 2000px;
+        color: blue;
+    }
+
+    p {
+        margin-top: 500px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type='text' value="手机">
+    <p id="center">我是中部</p>
+    <input type="radio" name="aa" value="">
+    <div>你是🐖</div>
+    <a href="#center">跳转到中部</a>
+
+    <script>
+        var text = document.querySelector('input')
+        text.style.color = '#999'
+        text.onfocus = function () {
+            //console.log('得到了焦点')
+            if (text.value === '手机') {
+                this.value = '';
+                this.style.color = '#333' //颜色变深
+            }
+        }
+        text.onblur = function () {
+            // console.log('失去了焦点')
+            if (text.value === '') {
+                this.value = '手机'
+                this.style.color = '#999'
+            }
+
+        }
+
+        //通过修改元素的classname更改元素的样式, 适用样式较多的情况
+        var div = document.querySelector('div')
+        div.onclick = function () {
+            div.className = 'change';//会覆盖原来的类名.
+            //divdiv.className = 'first change' 假如原来有类名first, 这样就可以保留两个类名.
+        }
+    </script>
+</body>
+
+</html>

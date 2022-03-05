@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+
+<body>
+	<ul> </ul>
+	<button id='btn'> lalala </button>
+	<div>it's me</div>
+	<p>显示的是现在的时间</p>
+	<button id='btn1'>点击的现在时间?</button>
+
+	<button id='IU'>IU</button>
+	<button id='hb'>何滨</button>
+	<img src="image/IU.jpg" alt="" class="img">
+	<script>
+		//1.返回的是 获取过来的元素对象的集合, 以伪数组的形式存储
+		// 	var lis= document.getElementsByTagName('li')
+		// 	console.log(lis);
+		// 	console.log(lis[0]);
+		// //2. 想要得到里面的元素,要用遍历的方法,获取的是动态的.
+		// 	for (var i=0; i<lis.length; i++){
+		// 		console.log(lis[i]);
+		// 	}
+		// //3.如果页面中只有一个li元素,返回的还是伪数组的形式;
+		// //4. 如果页面中没有这个元素  返回的是空的伪数组的形式;
+		// //5. element.getElementsByTagName('标签名'); 获取某个元素中的子元素
+		//   // 注意:父元素必须是指定的单个对象(必须指明是哪一个元素对象),获取的时候不包括父元素自己.
+		//   var ul=document.getElementById('ul');
+		//   console.log(ul.getElementsByTagName('li'));
+
+		//获取body元素和html元素
+		var bodyele = document.body;
+		console.log(bodyele);
+		var htmlEle = document.documentElement;
+		console.log(htmlEle);
+
+
+		//事件三要素:  事件源  事件类型 事件处理程序 
+		// 1. 事件源:即事件被触发的对象 
+		// 2.事件类型:即什么事件 比如 鼠标点击 鼠标经过 键盘按下等
+		// 3. 事件处理程序 通过一个函数赋值的方式完成
+		var btn = document.getElementById('btn');
+		btn.onclick = function () {
+			alert('is bond to be my future girl friend.')
+		}
+
+		//执行事件的步骤:
+		//1获取事件源  
+		var div = document.querySelector('div');
+		//2 绑定事件(注册事件) 
+		div.onclick
+		//3 添加事件处理程序
+		div.onclick = function () {
+			console.log('ur eyes are beautiful')
+		}
+
+		function getDate() {
+			var time = new Date()
+			var year = time.getFullYear()
+			var month = time.getMonth() + 1;
+			var date = time.getDate();
+			var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+			var day = time.getDay()
+			var h = time.getHours();
+			h = h < 10 ? '0' + h : h;
+			var m = time.getMinutes();
+			m = m < 10 ? '0' + m : m;
+			var s = time.getSeconds();
+			s = s < 10 ? '0' + s : s;
+			return '今天是 ' + year + '年' + month + '月' + date + '日' + arr[day] + h + ':' + m + ':' + s
+		}
+		var p = document.querySelector('p');
+		p.innerText = getDate();
+		var btn1 = document.getElementById('btn1');
+		btn1.onclick = function () {
+			btn1.innerText = getDate();
+		}
+
+		// innerText 和 innerhtml的区别 
+		// 1. innertext 不识别html的标签   非标准 
+		var haha = document.querySelector('ul');
+		// haha.innerText='今天是:  十月十五'
+		// 2.innerhtml  可以识别html的标签  w3c标准 
+		haha.innerHTML = '<strong>今天是:</strong>  十月十五'
+		// 这两个属性是可读写的  可以获取元素里面的元素  保留空格和换行 
+		var p = document.querySelector('p')
+		console.log(p.innerText)
+
+		//修改元素属性  src 
+		//1.获取元素 
+		var IU = document.getElementById('IU');
+		var hb = document.getElementById('hb');
+		var img = document.querySelector('img');
+		//2.注册事件 
+		IU.onclick = function () {
+			img.src = 'image/IU.jpg';
+			img.title = 'hb的lp';
+		}
+		hb.onclick = function () {
+			img.src = 'image/HB.jpg';
+			img.title = 'hb';
+		}
+	</script>
+</body>
+
+</html>

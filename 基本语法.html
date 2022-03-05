@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			// var a1=prompt('请输入您的姓名：');
+			// var a2=prompt('请输入您的年龄：');
+			// var a3=prompt('请输入您的性别：');
+			// alert('您的姓名是：'+a1+'\n您的年龄是：'+a2+'\n您的性别是：'+a3);
+			//类型转换
+			//  console.log(parseFloat('3.324')); //3.324
+			//  console.log(parseInt('23.2222'));//23
+			// //隐式转换
+			// console.log('243'-3);//240
+			// var age=prompt('请输入你的出生年份：')
+			// alert('您今年'+(2021-age)+'岁啦！')
+			//简单加法器
+			// var s1=prompt('请输入第一个数')
+			// var s2=prompt('请输入第二个数')
+			// var str='两数之和是：'+(parseFloat(s1)+parseFloat(s2))
+			// alert(str)
+			// var flag=null;	
+			// console.log(flag+'pink');// 输出nullpink
+			// console.log(flag+1); //输出 1
+			// var str
+			// console.log(str+'pink')  //输出是undefined
+			// console.log(str+1) //NaN
+
+			// 类型转换 三种方法  转换为字符型   变量.toString()
+			// var ea=78;
+			// console.log(ea);
+			// var str=ea.toString();
+			// console.log(str);
+			// console.log(String(ea));//强制转换
+			// console.log(ea+'');//隐式转换
+
+			// // //转换为数字型 四种方法
+			// var age=prompt('请输入你的年龄:');
+			// console.log(age);//字符型
+			// console.log(parseFloat(age))
+			// console.log(parseInt(age));//可以取整
+			// console.log(parseInt('651rpx')); // 会去掉rpx这个单位
+			// console.log(parseFloat('651rpx')); // 也会去掉rpx这个单位
+			// console.log(parseFloat('lalala651rpx')); // NaN ;parseInt也是NaN 
+			// //Number（变量）  
+			// var pl='234';
+			// console.log(Number(pl));
+			// //利用数字运算  - * / 都可以进行隐式转换
+			// var mm='222';
+			// console.log(mm-2)
+
+			//转换为布尔型  Boolean()  代表 空、否定的值都会转换为false ，如 0、null、NaN、undefined。
+			//				其余的值都转化为true。
+			// console.log(Boolean(0));
+			// console.log(Boolean(null));
+			// console.log(Boolean(NaN));
+			// console.log(Boolean(undefined));
+			// console.log(Boolean());
+			// //前面都是false ，后面都是true
+			// console.log(Boolean('wo hao kun'));
+			// console.log(Boolean(undefined));
+			//保留字：预留的关键字；关键字是语言本身要使用的词，不能用作变量名、方法名等。
+			// //交换2个变量的值：
+			// var a1='hb';
+			// var a2='love';
+			// var a3='IU';
+			// var mid;
+			// console.log(a1+a2+a3);
+			// mid=a1;
+			// a1=a3;
+			// a3=mid;
+			// console.log(a1+a2+a3);
+			//不要直接判断浮点数是否相等。
+			//表达式和返回值 
+			//数字、变量和运算符组成可以得到结果的式子就是表达式，返回值就是该表达式的计算结果。
+			 //前置自增：先加一，后返回值。（先己后人）
+			 //后置自增：先表达式返回原值，后面变量再自加一。    （先人后己 ）
+			   //* 前置后置自增  单独使用，效果是一样的。 与其他代码连用时，执行结果会不同。
+			 // var a1=10
+			 // var a2=10
+			 // console.log(a1++ + 3);//13
+			 // console.log(a1); //11
+			 // console.log(++a2+3)//14
+			 // console.log(a2);// 11
+			 // var b=10;
+			 // var c=b++ + ++b;// 10 +12 ∵ b++=10 b=11 ++e=12 e=12 ∴ 10+ 12=22
+			 // console.log(c) ;//22
+			 // //比较运算符 ：是两个数据进行比较时使用的运算符，比较运算后，结果会返回一个boolean值。
+			 // // ==  是判断相等（会转型 即 默认转换数据类型 3 ==‘3’结果是true。）
+			 // //  === 是全等符号， 要求值和类型都相同 
+			 // console.log(3=='3');//true 
+			 // console.log(3!='3');//false
+			 // console.log(3==='3');//false
+			 
+			//三元表达式，？：   
+			//n++， 5+6 ， 条件表达式？表达式1：表达式2   分别一元表达式 二元表达式 三元表达式
+			//语法结构 :条件表达式？表达式1：表达式2
+			//如果条件表达式复合，则返回表达式1的值，否则返回表达式2的值。
+			// var num=5 ;
+			// var aaa = num>10? '没错':'并不';
+			// console.log(aaa);
+			
+			//给小于10的数字前面补0.
+			// var num=prompt("请输入一个0-59之间的数字");
+			// var num2=num<10? '0'+num:num;
+			// alert(num2);
+			
+			//switch分支结构   多分支结构，实现的是多选一。 
+			//switch更适合固定的值的判断，就是选项value的值是固定的值（表达式最好也是固定值），4，5，9等，
+			// 而不是范围的 n>6这样的。
+			// 注意事项：1、 switch的表达式通常用变量来表示；
+			// 2、变量的值和case的值比较时，是  全等 （===）的关系，即要求值和类型都相同。
+			//3、如果当前的case没有break，那么就会执行下一个case的执行语句。
+			//基础语法： 
+			// switch （表达式）｛
+			// 	case value1:
+			// 	 	执行语句1;
+			// 		break;
+			// 	case value12:
+			// 		执行语句2;
+			//	 	break;
+			// 	...
+			// 	default: （上面的value都没有和表达式的值匹配上，就执行这个）
+			// 		执行语句n;
+			// ｝
+			//代码验证：
+			// switch (3){
+			// 	case '3':
+			// 		alert('这是1');
+			// 		break;
+			// 	case 3:
+			// 		alert('dk是s10总冠军');
+			// 		break;
+			// 	case 'dj':
+			// 		alert('我就是dj，你来爱我吧');
+			// 		break
+			// 	default:
+			// 	alert('啥也不是');
+			// }
+			
+			// //查询水果价钱案例
+			// var fruit=prompt('请您输入要查询的水果：')
+			// switch (fruit){
+			// 	case '苹果':
+			// 		alert('6.0元/kg');
+			// 		break;
+			// 	case '火龙果':
+			// 		alert('30元/kg');
+			// 		break;
+			// 	case '龙眼':
+			// 		alert('40元/kg');
+			// 		break;
+			// 	default:
+			// 		alert('暂不出售此水果。')
+			// }
+			
+			//作业
+			//判断时间阶段，输入不同的问候（上午、中午、傍晚、深夜好。）
+			// var time= prompt('请您输入0-23之间的时间数');
+			//  if (time>=0 && time<=11)  {
+			// 	 alert('上午好');
+			//  }
+			//  else if (time>11 && time<15){
+			// 	 alert('中午好');
+			//  }
+			//  else if (time>=15 && time<=19){
+			// 	 alert('傍晚好');
+			//  }
+			//  else alert('深夜好');
+			 
+			 //比较两个数的最大值，请用户依次输入两个数，弹出最大的数。
+			 // var n1= prompt('请您输入第一个数：');//输入的数的类型是string类型的 
+			 // console.log(typeof(n1));
+			 // var n2= prompt('请您输入第二个数：');
+			 // var nmax= parseFloat(n1)>parseFloat(n2)? n1:n2 
+			 // alert('您输入的两个数中，比较大的数是'+nmax)
+			 // console.log(typeof(n1));
+			 
+			 //用户输入一个数，判断是奇数还是偶数
+			 // var num= prompt('请输入一个数：');
+			 // console.log(num%2==0?'您输入的数是偶数':'您输入的数是奇数')
+			 
+			 //输入一个数（数字1到7），返回星期几
+			 // var num= prompt('请您输入一个1-7之间的数字：');
+			 // switch (num) {
+				//  case '1':
+				// 	alert('今天是星期一');
+				// 	break;
+				// case '2':
+				// 	alert('今天是星期二');
+				// 	break;
+				// case '3':
+				// 	alert('今天是星期三');
+				// 	break;
+				// case '4':
+				// 	alert('今天是星期四');
+				// 	break;
+				// case '5':
+				// 	alert('今天是星期五');
+				// 	break;
+				// case '6':
+				// 	alert('今天是星期六');
+				// 	break;
+				// default:
+				// 	alert('今天是星期日');
+			 // }
+			 
+			 //根据班长的钱数，决定请大家吃什么？2000以上西餐，1500-2000（不含）快餐，
+			 //1000-1500（不含）喝饮料，500-1000（不含）棒棒糖，500以下提醒下次多点钱。
+			//  var mon= prompt('请输入班长有多少钱：');
+			//  if (mon>=2000)  {
+			// 	alert('班长请我们吃西餐啦！');
+			// }
+			// 		else if (mon<2000 && mon>=1500) {
+			// 			alert('班长请我们吃快餐！');
+			// 		}
+			// 		else if (mon<1500 && mon>=1000){
+			// 			alert('班长只买得起饮料了');
+			// }
+			// 		else if (mon>=500 && mon<1000){
+			// 		alert('有棒棒糖吃就不错了');
+			// 	}
+			// 	else  alert('啥也没有，班长你做个人吧')
+			
+			//循环的目的：可以重复执行某些代码
+			// for(var i=1; i<=100; i++){
+			// 	console.log('你好啊未来女朋友')
+			// }
+			// //for循环结构：
+			// for (初始化变量;条件表达式;操作表达式)｛
+			// 	//循环体
+			// ｝
+			//初始化变量：用var声明一个变量，用来当做计数器。
+			//条件表达式：用来判断循环是否继续执行的条件，就是终止的条件。
+			//操作表达式：是每次循环最后执行的代码，用来更新计数器初始化变量的值（递增或递减）
+			// for (i=2; i<=101 ;  i++) {
+			// 	console.log('hello,world'); 
+			// }
+			
+			//for循环可以重复执行不同的代码  因为有计数器变量的存在  每次循环结束 i的值都会变化
+			// 想要输出一个人1-100岁。 
+			// for (let i=1 ; i<101 ; i++){
+			// 	if (i==1){
+			// 		console.log('这个人1岁了，刚出生没多久')
+			// 	}
+			// 	else if (i==100){
+			// 		console.log('这个人活到100岁死了')
+			// 	}
+			// 	else {console.log('这个人今年'+i+'岁了'); 
+			// 	}
+			// }
+			//1-100的累加和 
+			// let sum = 0 ;
+			// for ( var i=1 ;i<=100  ; i++) {
+			// 	sum+=i;
+			// }
+			// console.log(sum)
+			// 求1-100所有数的平均数；
+			// let ave=0;sum=0;
+			// for( var i= 1 ; i<=100 ; i++){
+			// 	sum+=i;
+				
+			// }
+			// 	ave=sum/100;
+			// console.log(ave)
+			// 分别求 1-100之间所有偶数和奇数的和
+	// 解法一:		var even=0; odd=0;
+	// 		for (i=1 ; i<101 ; i+=2){
+	// 			odd+=i; 
+	// 		}
+	// 		console.log('偶数的和：'+(5050-odd)+'\n奇数的和：'+odd )
+	//解法二:      
+		// 			var even=0; odd=0;
+		//  		for (i=1 ; i<101 ; i++){
+		// 			if (i%2==0) {
+		// 				even+=i;
+		// 			}else {
+		// 				odd+=i;
+		// 			}
+		// 		}
+		// 		console.log('偶数的和:'+even+'\n奇数的和:'+odd);
+			//求1-100之间 所有能被3整除的数的和 
+			// var sum=0 ;
+			// for (var i=0 ;i<101; i+=3){
+			// 		sum+=i;
+			// }
+			// console.log('1-100之间 所有能被3整除的数的和:'+sum);
+			
+			//求全班平均成绩，根据输入的人数，决定需要输入的成绩个数。
+			// var peo=prompt('请输入全班同学的总人数：')
+			// var ave=0 ; var sum=0; score=0;
+			// for (i=1;i<=peo;i++){
+			// 	var score=prompt('请输入第'+i+'个同学的分数：')
+			// 	sum+= parseFloat(score);
+			// }
+			// ave = sum/peo;
+			// console.log('全班同学的平均成绩是：'+ave);
+			
+			//一行打印5个⭐，采用追加字符串的方式。
+			// var str='';
+			// for (i=1; i<=5; i++){
+			// 	str= str +'⭐';
+			// }
+			// console.log(str);
+			
+			//双重for循环
+			//语法结构：
+			// for(外层的变量;条件表达式;操作表达式)｛
+			// 	for(变量;条件表达式;操作表达式)｛
+			// 		执行语句;
+			// 	｝
+			// ｝
+			//外层的for循环运行一次，里面的for循环执行全部，相当于外层的执行语句
+			//打印一个五行五列的⭐
+			// var str= '';
+			// for(var i=1; i<=5; i++){
+			// 	for(var j=1; j<=5; j++){
+			// 		str= str+'⭐';
+			// 	}
+			// 	//每一行打印完，就要重新另起一行
+			// 	str=str+'\n';
+			// }
+			// console.log(str);
+			const W = 'hello';
+			var str='';
+			var num=prompt('num?')
+			const M = parseInt(W.length, 10);
+		  for(var i=1; i<=M; i++){
+			 	
+		  		str= str+'hello';
+			 
+			 //每一行打印完，就要重新另起一行
+			  	str=str+'\n';
+			  }
+			   console.log(str);
+			
+			//打印n行m列的⭐，根据用户输入的来打印。
+			// var str='';
+			// var i=prompt('请您输入要打印的星星的行数：');
+			// var j=prompt('请您输入要打印的星星的列数：');
+			// for (var n=1; n<=i; n++){
+			// 	for(var m=1; m<=j; m++){
+			// 		str=str+'⭐';
+			// 	}
+			// 	str=str+'\n';
+			// }
+			// console.log(str);
+			
+			//打印倒三角形案例：就是第一行n个星星，第二行n—1个星星....第n-1行1个星星。
+		// 如：	 		⭐⭐⭐⭐
+		// 				⭐⭐⭐
+		// 				⭐⭐
+		// 				⭐
+			// var str=''
+			// var n=prompt('请您输入要打印的倒三角形行数：');
+			// for (var i=1; i<=n;i++){//决定打印多少行
+			// 	for (var j=i; j<=n; j++){//每行打印的星星数不一样，所以 j=i 来实现
+			// 		str+='⭐'; 	//内存循环的逻辑是，1~n是n个数字，2~n是n-1个数字，3~n是n-2个，依次
+			// 	}				//类推，最后就是n-1~n行是1个数字，即循环分别是n，n-1，n-2...1 个⭐
+			// 	str+='\n';
+			// }
+			// console.log(str);
+			
+			//打印正三角形：
+			// str='';
+			// for (var i=1; i<=10; i++){
+			// 	for (var j=1; j<=i;j++){//如何让第一行打印1个，
+			// 		str+='⭐';
+			// 	}
+			// 	str+='\n';
+			// }
+			// console.log(str);
+			
+			//打印9*9乘法表
+			// str='';
+			// for (var i=1; i<=9; i++){
+			// 	for (var j=1; j<=i;j++){//如何让第一行打印1个，
+			// 		str+=j+'×'+i+'='+i*j+'\t';
+			// 	}
+			// 	str+='\n';
+			// }
+			// console.log(str);
+			
+			//while 循环语法结构
+			// while (条件表达式){
+			// 	循环体;
+			// }
+			//while中应当也有 初始化变量作为计数器
+			//while中也有操作表达式，来更新计数器的值，防止死循环。
+			// var n=1;
+			// while(n<=10){
+			// 	console.log('我是你爸爸');
+			// 	n++;//这个 就叫做操作表达式
+			// }
+			// var m=prompt('do you love me?') ;
+			
+			// while(m!=='yes'){
+			// 	m=prompt('do you love me?');
+			// }
+			// 	alert('I love you too');
+				
+			//do while 循环结构
+			// do {
+			// 	循环体;//包含操作表达式:即计数器值的更新
+			// }while(条件表达式) //用来判断是否继续进行循环。
+			// var i=1;
+			// do{
+			// 	console.log('hi. muddy puddle!')
+			// 	i++
+			// }while(i<=100);
+			
+			// var i=1;
+			// do {
+			// 	console.log('这个人今年'+i+'岁了');
+			// 	i++;
+			// }while(i<=99);
+			
+			// var result=0; n=1
+			// do {
+			// 	result+=n;
+			// 	n++
+			// } while(n<=100);
+			// console.log(result);
+			
+			//do while代码示例
+			// do {
+			// var	str=prompt('nihaoma ?')
+			// } while(str!=='good');
+			// alert('henhao');
+		
+			//continue 关键字  退出本次循环， 跳到i++上，直接进行下一个循环。
+		// 	for(i=1; i<=5; i++){
+		// 		if (i==2){
+		// 			continue;
+		// 		}
+		// 		console.log('I eat'+i+' baozi ');
+		// 	}
+			
+		// 	var sum= 0;
+		// 	for (var i=1; i<=100; i++){
+		// 		if(i%7==0){
+		// 			continue;
+		// 		}
+		// 		sum	+=	i;
+		// 	}
+		// 	console.log(sum);
+			
+		// 	//break 关键字   退出整个循环   
+		// for (i=1; i<=5; i++){
+		// 	if (i==3){
+		// 		break;
+		// 	}
+		// 	console.log('wo zai chi '+i+'ge baozi ')
+		// }
+			
+		//1-100所有数的总和与平均值
+		// var i=1; sum=0; aver=0;
+		// for (i=1; i<=100; i++){
+		// 	sum+= i; 
+		// } 
+		// aver=sum/100
+		// 	console.log('zonghe='+sum+'\n'+'pingjunzhi='+aver);
+		//1-100所有偶数的和；100以内7的倍数的总和；
+		// var sum=0; i=1;
+		// for (i=1;i<=100;i++){
+		// 	if (i%2==0){
+		// 		sum += i ;
+		// 	}
+			
+		// }
+		// 	console.log('oushuhe='+sum);
+		
+		// var sum7=0; i=1;
+		// for (i=1;i<=100;i++){
+		// 	if (i%7==0){
+		// 		sum7 += i ;
+		// 	}
+			
+		// }
+		// 	console.log('7的倍数和='+sum7);
+		// //打印矩形 4*5的矩形；
+		// var outcome='';
+		// for (var i=1; i<=4;i++){
+		// 	for (var j=1;j<=5; j++){
+		// 		outcome+='★';
+		// 	}
+		// 	outcome+='\n';
+		// }
+		// console.log(outcome);
+		
+		// //打印一个三角形 第一行一个*；第二行2个*...5行
+		// var str='';
+		// for (var i=1; i<=5;i++){
+		// 	for(var j=1; j<=i;j++){
+		// 		str+='*';
+		// 	}
+		// 	str+='\n';
+		// }
+		// console.log(str);
+		
+		// //打印99乘法表；
+		// var i=1; j=1; result='';
+		// for(i=1; i<=9; i++){
+		// 	for (j=1; j<=i; j++){
+		// 		result+=j+'*'+i+'='+(i*j)+'\t'; //每行输出是叠加的话，要使用n=n+'表达式'的结构；简写n+='表达式'
+		// 	}
+		// 	result+='\n';
+		// }
+		// console.log(result)
+		
+		// //接受输入的用户名和密码：admin和123456；如果是提示登录成功，不是就一直输入；
+		// // for(var i=1;i>=1;i++){
+		// // 	var accout=prompt('请输入用户名');
+		// // 	var password=prompt('请输入密码');
+		// // 	if (accout=='admin' && password=='123456'){
+		// // 		alert('登录成功');
+		// // 		break;
+		// // 	}
+		// // }
+		
+		// //求1-100的累加值，除去个位数为3的数。
+		// var sum=0;
+		// for(var i=1;i<=100;i++){
+		// 	if(i%10==3){
+		// 		continue;
+		// 	}
+		// 	sum+=i;
+		// }
+		//  console.log(sum);
+		
+		//ATM 弹出窗口选择输入1234中的一个  1 取钱 2 存钱 3 显示余额 4 退出 
+//我自己的ATM机终于做出来了!! 
+//太不容易啦 用了do while 嵌套 switch,难在switch的停止和循环上,即要想让它在每一种操作之后返回主页面.
+//还有个小问题就是点取消,无法退出,只有输入4才可以退出.
+		// 	var mon=100;
+		//  do{
+		// 	var choice=prompt('请输入要进行的操作：'+'\n'+'1.取钱'+'\n'+'2.存钱'+'\n'+'3.显示余额'+'\n'+'4.退出');
+		//  switch(choice){
+		// 	 case '1':
+		//  	 var out=parseFloat(prompt('请输入要取的金额：'));
+		// 		mon=mon-out;
+		// 		alert('您的剩余金额为：'+mon);
+		// 		 choice;
+		// 		break;
+		// 	case '2':
+		// 	var add=parseFloat(prompt('请输入要存的金额：'));
+		// 		mon=mon+add;
+		// 		alert('您的现在的金额为'+mon);
+		// 		choice;
+		// 		break;
+		// 	case '3':
+		// 		alert('您现在的余额为：'+mon);
+		// 		choice;
+		// 		break;
+		// 	default: 
+		// 		alert('正在退出');
+		// 		break;
+		// 	}
+		// } while (choice!=4);
+		
+		//插入		//ATM机取款案例 别人的答案
+				// var money = 100;
+				//         while (true) {
+				//             var num = prompt('请输入您要进行的操作:' +' \n' +'1.存钱' + '\n' + '2.取钱' + '\n' + '3.显示余额' + '\n'+'4.退出');
+				//             if (num == 1) {
+				//                 var add = parseFloat(prompt('输入存的钱数：'));
+				//                 money += add;
+				//                 alert('你现在的钱数是：' + money)
+				//             } else if (num == 2) {
+				//                 var sub = parseFloat(prompt('输入取的钱数：'));
+				//                 money -= sub;
+				//                 alert('你现在的钱数是： '+ money)
+				//             } else if (num == 3) {
+				//                 alert('你现在的钱数是：' + money)
+				//             } else {
+				//                 alert('正在退出...')
+				//                 break;
+				//             }
+				//         }
+		//数组：一组数据的集合，存储在单个变量下的优雅方式
+		//创建数组：1利用new创建数组；2利用数组字面量创建数组[]；
+		//数组里的元素都用逗号分隔，可以是任意类型
+		// let arr= new Array(1,2,3);  // 第一种方式
+		// console.log(arr);
+		// let arr1=['mouse','cat','pig',true,3];//使用最多的方式 
+		// console.log(arr1);
+		
+		// //获取数组元素： 数组名[索引号]； 索引号是从0开始数的
+		// // console.log(arr1[2]);
+		// // console.log(arr1[5]);// 因为没有第六个元素  所以输出undefined
+		
+		// //遍历数组， 把所有的元素从头到尾访问一遍。 
+		// for (i=0;i<arr1.length;i++){
+		// 	console.log(arr1[i]);
+		// }
+		//把数组的所有元素求和，求平均值
+		// let arr=[3,6,5,6,3,1];
+		// let sum=0;
+		// for (i=0;i<arr.length;i++){
+		// 	sum+=arr[i];
+		// }
+		// let average=sum/arr.length
+		// console.log(sum,average)   //想要输出多个变量，用逗号隔开就可以了
+		//求数组中的最大值
+		//定义一个最大值max，然后数组中的每个元素都和max比较，如果比max大，那么就把该元素赋值给max，如果比max小，那么就进行一下个的比较，最后输出max。
+		 
+		// let array=[4,113430,532,63,534,63332,3222,32,40,9080,3119]
+		// let max=array[0];
+		// for (let i=1; i<array.length;i++){
+		// 	if (array[i]>max){
+		// 		max=array[i]
+		// 	}
+		// }
+		// console.log(max)
+		//把数组中的元素变为字符串，并且加上  | 
+		// let arr=['red','blue','white','black','pupple'];
+		// let str='';
+		// for (var i=1; i<arr.length; i++){
+		// 	str+=arr[i]+'|'
+		// }
+		// 	console.log(str)
+			
+		//增加数组长度：
+		//1通过修改length属性来增加，该属性是可读写的。
+		// let arr=['red','blue','white','black','pupple'];
+		// arr.length=7;
+		// console.log(arr);	//整个数组最后面的元素是 empty*2；
+		// console.log(arr[5]); 
+		// console.log(arr[6]); //输出的值是undefined，但是显示是empty
+		// //2 修改索引号，追加数组元素； 同时也可以替换原来的数组元素
+		// let arr2=['red','blue','white','black','pupple'];
+		// arr2[9]='ink';
+		// console.log(arr2[9]);
+		// arr2[0]='blahblah';
+		// console.log(arr2);// red会被blahblah 替换掉，其他的不变。
+		
+		// arr2='???nothing is here'; //不要给数组名直接赋值，否则数组元素都被取代了！！！
+		// console.log(arr2);//  结果是  ???nothing is here 
+		
+		//新建一个数组，里面存放1-100的整数；
+		// var arr=[];
+		// for (i=0; i<100; i++){
+		// 	arr[i]=i+1;
+		// }
+		// console.log(arr);
+		
+		//将一个数组中大于10的元素取出来，组成一个新数组。
+		// let arr=[23,18,27,39,19,37,38,28,37,17,77,88,99,97,89,79,98,79,78];
+		// let arr1=[];
+		// let j= 0 ; 
+		// for (i=0; i<arr.length;i++){
+		// 	if (arr[i]>50){
+		// 	 arr1[arr1.length]=arr[i];//arr1.length可以用作索引号是因为 arr1是空数组arr1.length就是0,所以开始是 arr1[0]=arr[i]; 接下来arr1中已经有一个元素了，所以arr1.length变成了1,刚刚好。
+		// 	// j++;  arr1.length可以换为 j 
+		// 	}
+		// }
+		// console.log(arr1);
+		
+		//把原来数组中不是0的元素提取出来，组成一个新数组。
+		// let arr=[2,9,7,8,9,6,3,0,9,9,7,8,9,978787878799999997897897897897897897987987979797978888899798];
+		// let newarr=[];
+		// for (i=0; i<arr.length; i++){
+		// 	if (arr[i]!=8){
+		// 		newarr[newarr.length]=arr[i]
+		// 	}
+		// }
+		// console.log(newarr);
+		
+		//翻转数组  第一个放到最后一个，最后一个放到第一个
+		// let arr=['a','b','c'];
+		// let newarr=[];
+		// for (i=arr.length-1; i>=0;i--){
+		// 	newarr[newarr.length]=arr[i];
+		// }
+		// console.log(newarr);
+		
+		//冒泡排序  就是将一个数组按照从大到小的顺序或从小到大的顺序排列。
+		//算法：根据数组的长度，决定要循环比较多少趟，因为有n个数，进行两两对比n-1次比较后(1和2，2和3，3和4，....)，就可以把极值放在最后，我们把n-1次称为趟数；第一趟比较需要n-1次，第二趟比较需要n-2次，...最后一趟需要比较1次。
+		// var arr=[3,9,0,8,7,2];
+	 
+		// for ( i=0; i<arr.length-1; i++){  //外层循环 根据数组的长度，决定要循环比较多少趟
+		// 	for (j=0;j<arr.length-i-1;j++){ //内层循环，每一趟的比较次数从n-1次开始递减直到1。
+		// 		if (arr[j]>arr[j+1]){
+		// 			var temp=arr[j];
+		// 			arr[j]=arr[j+1];
+		// 			arr[j+1]=temp;
+		// 		}
+		// 	}
+		// }
+		// 	console.log(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>监听注册事件</button>
+    <script>
+        /*    注册事件(也叫绑定事件)
+           传统注册事件:
+       注册事件的唯一性;
+         同一个元素同一个事件只能有一个函数,如果有多个,后面会覆盖前面的.*/
+        var btn = document.querySelectorAll('button')
+        btn[0].onclick = function () {
+            alert('first fn')
+        }
+        btn[0].onclick = function () {
+            alert('second fn')
+        }
+        //2.方法监听注册事件  
+        //使用方法: addEventListener('type',listener, useCapture)
+        //useCapture  可选参数,默认值为false
+        //同一个元素同一个事件可以注册多个监听器(事件处理程序),并且按顺序依次执行 
+        //事件类型必须带引号,而且不加on 
+        btn[1].addEventListener('click', function () {
+            alert('方法监听注册事件')
+        });
+        btn[1].addEventListener('click', function () {
+            alert('方法监听注册事件2')
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

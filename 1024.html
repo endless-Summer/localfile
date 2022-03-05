@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            font-size: 30px;
+            font-style: nomal;
+            font-weight: 600;
+            font-family: '新宋体';
+            text-shadow: -20px -2px blur rgb(228, 97, 97);
+        }
+
+        @font-face {
+            font-family: 'myfont';
+            src: url(“/fonts/test.woff”), url("/fonts/test.ttf");
+        }
+
+        ul {
+            list-style-type: square;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>请登录</legend>
+            账号:<input type="text"><br>
+            密码:<input type="password">
+            <input type="submit">
+            <input type="date" value="请输入邮箱">
+        </fieldset>
+    </form>
+
+    <!--给输入框绑定待选列表: input中的list 要和 datalist的id对应,表现的样式是可以选择的 -->
+    <input type="text" list="xxx">
+    <datalist id="xxx">
+        <option>xxx</option>
+        <option>111</option>
+        <option>222</option>
+    </datalist>
+    <div style="color:red;font-size:14px">
+        设置字体颜色为红色，并且字体大小为14px
+    </div>
+    <p>p测试</p>
+    <ul>
+        <li>0</li>
+        <li>2</li>
+    </ul>
+    <table>
+        <tr>
+            <th>粗体 居中</th>
+        </tr>
+        <td> 左对齐的普通文本</td>
+    </table>
+</body>
+
+</html>

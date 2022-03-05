@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .box {
+        position: relative;
+        width: 400px;
+        border-bottom: 1px solid #ccc;
+        margin: 100px auto;
+    }
+
+    .box input {
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+        color: aqua;
+    }
+
+    .box button {
+        position: absolute;
+        width: 29px;
+        top: -9px;
+        right: -9px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <button calss='box' id='state'>隐藏</button>
+        <input type="password" name="" id="pwd">
+        <input type="text">
+    </div>
+    <script>
+        var state = document.getElementById('state');
+        var pwd = document.getElementById('pwd')
+        var flag = 0;
+        state.onclick = function () {
+
+            if (flag == 0) {
+                pwd.type = 'text';
+                flag = 1;
+                //样式属性操作:element.style 这个是行内样式操作,产生的是行内式,权重比高.
+                // 行内式:如 <div style='width:200px; height:200px;'><div>
+                this.style.backgroundColor = 'pink'
+            } else {
+                pwd.type = 'password';
+                flag = 0;
+                this.style.backgroundColor = 'brown'
+            }
+        }
+    </script>
+</body>
+
+</html>

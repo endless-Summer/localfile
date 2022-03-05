@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        //模拟京东搜索框,即按s键定位到搜索框输入内容
+        //思路:检测用户是否输入了s ,如果输入了,就把光标定位到搜索框里面
+        //使用键盘事件 keycode() 判断s的按下 
+        // 使用focus()方法获得焦点 
+        var inp = document.querySelector('input')
+        document.addEventListener('keyup', function (e) {
+            if (e.keyCode === 115) {
+                inp.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>

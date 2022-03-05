@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            position: absolute;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <script> //window对象的常见事件
+        //window.onload=function(){ }或者window.addEventListener('load',function(){})
+        // 这个事件是页面加载事件,当文档内容全部(包括脚本,图片,css文件等)加载完成就触发该事件,
+        // 就调用的处理函数.
+        //有了这个函数可以把JS代码写到页面元素的上方
+        //2 window.onload只能写一次,有多个以最后一个为准;addEventListener则没有限制
+        window.addEventListener('load', function () {
+            alert(2222)// 其次弹出 
+        })
+        //DOMContentLoaded 是等DOM加载完毕,不包含图片 css等就可以执行
+        document.addEventListener("DOMContentLoaded", function () {
+            alert(333333) //最先弹出,而且可以展示js的页面交互效果.
+        })
+
+        window.onload = function () {
+            var btn = document.querySelector('button')
+            btn.onclick = function () {
+                alert(111111111) // 点击弹出 
+            }
+        }
+
+        //调整窗口大小事件
+        window.addEventListener('resize', function () {
+            let div = document.querySelector('div')
+            if (window.innerWidth < 800) {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        })
+    </script>
+    <button> 1111111</button>
+    <div></div>
+</body>
+
+</html>

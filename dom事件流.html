@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .son {
+            height: 200px;
+            width: 300px;
+            position: relative;
+            left: 200px;
+            top: 100px;
+            background-color: aqua;
+        }
+
+        .father {
+            background-color: rgb(68, 0, 255);
+            height: 400px;
+            width: 600px;
+            position: absolute;
+            left: 500px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">father
+        <div class="son"> son</div>
+    </div>
+    <script>
+        //JS代码只能执行捕获或冒泡其中的一个阶段
+        //onclick和attachEvent只能得到冒泡阶段
+        // addEventListener() 当第三个参数为true时,按照捕获阶段的顺序访问
+        //当为false或不存在时,默认按照冒泡顺序
+        //我们最常用的就是冒泡排序  
+
+        //第一种访问方式(捕获访问): 总是会先访问外层节点(广告就是这样恶心人的)
+        // let div = document.querySelector('.father');
+        //  div.addEventListener('click', function () {
+        //      alert('father')
+        //   }, true)
+        //   let div1 = document.querySelector('.son');
+        //   div1.addEventListener('click', function () {
+        //      alert('son')
+        // }, true)  
+
+        //第二种访问方式(冒泡访问): 会先访问最内层的节点,然后依次访问包含它的外层元素
+        let div = document.querySelector('.father');
+        div.addEventListener('click', function () {
+            alert('father')
+            //点击在father而不在son的区域,会弹出father和document
+        })
+        let div1 = document.querySelector('.son');
+        div1.addEventListener('click', function (e) {
+            alert('son')
+            //4.阻止事件冒泡的两种方式 
+            //e.stopPropagation() //dom推荐使用的方法
+            e.cancelBubble = true;//非标准方法 
+            //如果son不在father的区域内,那点击son所在的div就不会访问father的click事件
+        })
+        document.addEventListener('click', function () {
+            alert('document')
+        })
+
+        //事件委托 (事件代理)
+        //原理: 不是个给每个子节点单独设置事件监听器,而是事件监听器设置在其父节点上,
+        //然后利用冒泡原理影响设置每个子节点;优势在于:只操作了一次dom,提高了程序的性能
+
+
+
+
+    </script>
+</body>
+
+</html>
